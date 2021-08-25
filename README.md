@@ -7,3 +7,5 @@ To use this theme:
 2. Use `npm install` to install dependencies
 3. Use `npm run test` to build css for local dev environment
 4. Use `npm run production` to build css for production website
+
+Example of the theme in use: https://trond.sjovang.no
