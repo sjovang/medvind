@@ -1,0 +1,14 @@
+<div class="container mx-auto p-8">
+    <h1 id="name" class="text-5xl text-center font-light tracking-widest mb-4">{{ .Site.Title }}</h1>
+    <section id="profileinfo" class="mt-8">
+        {{ with .Site.Params.description }}<p id="authorintro" class="md:px-16 lg:px-32 mb-4 text-xl text-center font-serif font-light italic">{{ .Site.Params.description }}</p>{{ end }}
+        <section id="contactinfo">
+            <ul class="list-reset flex justify-center text-2xl">
+                {{ with .Site.Params.email }}<li class="mx-2"><a href="mailto:{{ . }}" aria-label="send email"><i class="fas fa-envelope"></i></a></li>{{ end }}
+                {{ with .Site.Params.twitter }}<li class="mx-2"><a href="https://twitter.com/{{ . }}" aria-label="Twitter account"><i class="fab fa-twitter"></i></a></li>{{ end }}
+                {{ with .Site.Params.github }}<li class="mx-2"><a href="https://github.com/{{ . }}" aria-label="GitHub Account"><i class="fab fa-github"></i></a></li>{{ end }}
+                {{ with .Site.Params.linkedin }}<li class="mx-2"><a href="https://www.linkedin.com/in/{{ . }}" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a></li>{{ end }}
+            </ul>
+        </section>
+    </section>
+</div>

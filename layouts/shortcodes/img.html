@@ -1,0 +1,22 @@
+{{ with $.Page.Resources.GetMatch (.Get "name") }}
+  <figure class="border-nord4 my-4">
+    <a href="{{.RelPermalink}}">
+      <img
+        srcset="
+			{{ (.Resize "640x Lanczos q100").RelPermalink }} 640w,
+			{{ (.Resize "768x Lanczos q100").RelPermalink }} 768w,
+			{{ (.Resize "1024x Lanczos q100").RelPermalink }} 1024w,
+			{{ (.Resize "1280x Lanczos q100").RelPermalink }} 1280w,
+			{{ (.Resize "1536x Lanczos q100").RelPermalink }} 1536w"
+		sizes="
+			(max-width: 640px) 640px,
+			(max-width: 768px) 768px,
+			(max-width: 1024px) 1024px,
+			(max-width: 1280px) 1280px,
+			(min-width: 1280px) 1536px"  
+        src="{{ (.Resize "1536x Lanczos q100").RelPermalink }}" alt="{{ .Title }}"/>
+    </a>
+  </figure>
+{{ else }}
+	could not find image
+{{ end }}

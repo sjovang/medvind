@@ -1,0 +1,24 @@
+{{ define "title" }}
+{{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+<article class="mb-16">
+    <header>
+        <h1 class="text-center text-3xl md:text-5xl pb-4 font-serif font-light">{{ .Title }}</h1>
+        <ul class="list-reset list-none flex justify-center mb-4 font-serif font-light pb-4 ">
+            <li class="text-nord14 px-2"><span title="Published"><i class="far fa-calendar-alt"></i> {{ .Date.Format "January 2, 2006" }}</span></li>
+            {{ if ne (.Lastmod.Format "January 2, 2006") (.Date.Format "January 2, 2006") }}
+                &nbsp;
+                <li class="text-nord13 px-2"><span title="Last Updated"><i class="fas fa-sync-alt"></i> {{ .Lastmod.Format "January 2, 2006" }}</span></li>
+            {{ end }}
+        </ul>
+        {{ with .Params.note }}
+            <p class="warning w-full p-2 my-4 bg-nord11 text-xl">{{ . | markdownify }}</p>
+        {{ end }}
+    </header>
+    <div class="prose-dark prose-lg lg:prose-xl max-w-none text-nord6">
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}

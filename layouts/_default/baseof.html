@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        {{ with .Site.Params.az_insights_key }}{{ partial "azure-application-insights.html" . }}{{ end }}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+        <link href="/css/medvind.css" rel="stylesheet">
+        <link href="/css/nord.dark.css" rel="stylesheet">
+        <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+    </head>
+    <body class="bg-nord0 text-nord6 font-sans antialiased text-lg pb-16">
+        <div id="hero" class="bg-nord10 text-nord6 font-serif">
+            <div class="container mx-auto px-8">
+                <nav class="flex flex-wrap justify-between md:justify-start gap-x-2 py-2 text-2xl">
+                    <a href="/" class="hover:text-nord4" aria-label="Home Button"><i class="fas fa-home"></i></a>
+                    <div class="flex md:hidden">
+                        <button id="hamburger" class="hover:text-nord4 focus:outline-none">
+                            <i class="toggle block fas fa-bars"></i>
+                            <i class="toggle hidden far fa-window-close"></i>
+                        </button>
+                    </div>
+                    <div class="toggle hidden md:flex w-full md:w-auto mt-4 md:mt-0">
+                        <a class="block md:inline-block px-2 py-2 md:py-0 hover:text-nord4 hover:bg-nord0 md:hover:bg-nord10 border-b-2 border-opacity-10 border-nord0 md:border-none" href="/about">About</a>
+                        <a class="block md:inline-block px-2 py-2 md:py-0 hover:text-nord4 hover:bg-nord0 md:hover:bg-nord10 border-b-2 border-opacity-10 border-nord0 md:border-none" href="/posts">Posts</a>
+                    </div>
+                </nav>
+            </div>
+            {{ block "hero" . }}{{ end }}
+            </div>
+        <div class="container mx-auto mt-16 px-8">
+            {{ block "main" . }}
+            
+            {{ end }}
+        </div>
+        <script src="/js/medvind.js"></script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+{{ define "hero" }}
+    {{ partial "hero.html" . }}
+{{ end }}
+
+{{ define "main" }}
+    {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }} 
+    {{ range $paginator.Pages }}
+        <article class="mb-8">
+            <div class="flex md:flex-row-reverse flex-wrap mb-1">
+                <h2 class="w-full md:w-5/6 md:pl-4 font-serif font-light text-3xl"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                <div class="hidden md:block w-full md:w-1/6"></div>
+            </div>
+            <div class="flex flex-wrap">
+                <div class="w-full text-sm md:text-xl tracking-wide font-serif font-light md:w-1/6 text-nord9">{{ .Date.Format "January 2, 2006" }}</div>
+                <div class="w-full md:w-5/6 md:border-l-2 border-nord10 md:pl-4">
+                    {{ if .Truncated }}
+                        {{ .Summary }} <a href="{{ .Permalink }}">…</a>
+                    {{ else }}
+                        {{ .Content }}
+                    {{ end }}
+                </div>
+            </div>
+        </article>
+    {{ end }}
+
+    {{ if gt $.Paginator.TotalPages 1 }}
+        <section id="paginator">
+            <ul class="flex list-reset justify-center mt-4 mb-8">
+                {{ if $.Paginator.HasPrev }}
+                <li><a class="block px-3 py-2 mx-1" href="{{ $.Paginator.Prev.URL }}">&laquo;</a></li>
+                {{ end }}
+                {{ range $i,$e := $.Paginator.Pagers }}
+                    {{ if eq (add $i 1) $.Paginator.PageNumber}}
+                        <li><span class="block px-3 py-2 mx-1">{{ $e.PageNumber }}</span></li>
+                    {{ else }}
+                        <li><a class="block px-3 py-2 mx-1" href="{{ $e.URL }}">{{ $e.PageNumber }}</a></li>
+                    {{ end }}
+                {{ end }}
+                {{ if $.Paginator.HasNext }}
+                <li><a class="block px-3 py-2 mx-1" href="{{ $.Paginator.Next.URL }}">&raquo;</a></li>
+                {{ end }}
+            </ul>
+        </section>
+    {{ end }}   
+{{ end }}

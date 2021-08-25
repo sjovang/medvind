@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@100;300&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a:link { @apply text-nord9; }
+a:visited { @apply text-nord9; }
+a:hover { @apply text-nord10 underline; }
+a:active { @apply text-nord10; }
+
+nav a:link { @apply text-nord6; }
+nav a:visited { @apply text-nord6; }
+
+#contactinfo a:link { @apply text-nord6; }
+#contactinfo a:visited { @apply text-nord6; }
+
+article .warning a:link { @apply text-nord6; }
+article .warning a:visited { @apply text-nord6; }
+
+article ul { @apply list-disc list-inside; }
+article ol { @apply list-decimal list-inside; }
+
+.prose-dark p code { @apply text-nord7; }
+
+article .highlight { @apply font-mono; }
+.highlight .chroma { @apply m-0 p-0; white-space: pre-wrap; }
+.highlight code { @apply m-0 font-mono; }
+pre { @apply font-mono; }
